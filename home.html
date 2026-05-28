@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPM2 Giveaway Queue</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      height:100vh;
+      background:url('images/main\ og.jpg') center/cover;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    header::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.65);
+    }
+
+    .hero{
+      position:relative;
+      z-index:2;
+      max-width:700px;
+      padding:20px;
+    }
+
+    .hero h1{
+      font-size:60px;
+      margin-bottom:20px;
+      color:#38bdf8;
+      text-shadow:0 0 15px #38bdf8;
+    }
+
+    .hero p{
+      font-size:20px;
+      margin-bottom:30px;
+      line-height:1.6;
+    }
+
+    .btn{
+      padding:15px 35px;
+      border:none;
+      border-radius:12px;
+      font-size:18px;
+      cursor:pointer;
+      background:#38bdf8;
+      color:black;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:scale(1.05);
+      background:white;
+    }
+
+    section{
+      padding:80px 20px;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:40px;
+    }
+
+    .card{
+      background:#0f172a;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card h3{
+      margin-bottom:10px;
+      color:#38bdf8;
+    }
+
+    .queue-box{
+      background:#0f172a;
+      padding:40px;
+      border-radius:20px;
+      text-align:center;
+      margin-top:40px;
+    }
+
+    .queue-number{
+      font-size:70px;
+      color:#38bdf8;
+      margin:20px 0;
+    }
+
+    input{
+      width:100%;
+      padding:15px;
+      margin:10px 0;
+      border:none;
+      border-radius:10px;
+      font-size:16px;
+    }
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:20px;
+      margin-top:50px;
+      color:#94a3b8;
+    }
+
+    .premium{
+      background:linear-gradient(135deg,#f59e0b,#facc15);
+      color:black;
+      padding:50px 20px;
+      border-radius:20px;
+      margin-top:50px;
+      text-align:center;
+    }
+
+    .premium h2{
+      font-size:40px;
+      margin-bottom:20px;
+    }
+
+    .share-box{
+      margin-top:20px;
+      background:white;
+      color:black;
+      padding:15px;
+      border-radius:12px;
+      word-break:break-all;
+    }
+
+    @media(max-width:768px){
+      .hero h1{
+        font-size:40px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>CAR PARKING MULTIPLAYER 2</h1>
+      <p>
+        Official styled Car Parking Multiplayer 2 giveaway website.
+        Join the live queue and win premium CPM2 cars every month.
+      </p>
+      <button class="btn" onclick="scrollToQueue()">Join Queue</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 style="text-align:center;font-size:40px;color:#38bdf8;">
+        Giveaway Cars
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <img src="images/yaris.webp">
+          <div class="card-content">
+            <h3>CPM2 Yaris</h3>
+            <p>Rare custom tuned sports car for CPM2 players.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/fortuner.webp">
+          <div class="card-content">
+            <h3>CPM2 Fortuner</h3>
+            <p>Exclusive luxury giveaway with custom design.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/m2.webp">
+          <div class="card-content">
+            <h3>CPM2 New M2</h3>
+            <p>Fast and rare car for monthly lucky winners.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="queueSection">
+    <div class="container">
+
+      <div class="queue-box">
+        <h2 style="font-size:40px;">Current Queue</h2>
+
+        <div class="queue-number" id="queueCount">184</div>
+
+        <p>Only one player wins every month.winners will be announced through instagram</p>
+
+        <br>
+
+        <input type="text" id="playerName" placeholder="Enter Your instagram Username Without Mistakes">
+
+        <button class="btn" onclick="joinQueue()">Join Giveaway Queue</button>
+
+        <p id="status" style="margin-top:20px;color:#38bdf8;"></p>
+      </div>
+
+      <div class="premium">
+        <h2>PRO PASS</h2>
+
+        <p>
+          Share this website with 5 friends and unlock the Premium Queue.
+          Premium Queue has only 50 players, giving you a better chance to win.
+        </p>
+
+        <div class="share-box" id="shareLink">
+          https://yourwebsite.com
+        </div>
+
+        <br>
+
+        <button class="btn" onclick="copyLink()">Share Website</button>
+
+        <button class="btn" onclick="claimProPass()" style="margin-left:10px;">
+          Claim PRO PASS
+        </button>
+
+        <p id="proMessage" style="margin-top:20px;font-weight:bold;"></p>
+
+        <div id="premiumWindow" style="display:none;margin-top:30px;background:#0f172a;padding:30px;border-radius:20px;">
+          <h2 style="color:#38bdf8;">PREMIUM QUEUE</h2>
+          <p>You unlocked the special CPM2 premium giveaway queue.</p>
+          <div id="premiumQueueNumber" style="font-size:60px;color:#38bdf8;margin-top:20px;"></div>
+          <p>Only 50 players maximum in this premium waiting line.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 CPM2 Giveaway Queue | Designed for Car Parking Multiplayer 2 Fans
+  </footer>
+
+  <script>
+
+    function scrollToQueue(){
+      document.getElementById('queueSection').scrollIntoView({
+        behavior:'smooth'
+      });
+    }
+
+    function joinQueue(){
+      let name = document.getElementById('playerName').value;
+
+      if(name === ''){
+        alert('Please enter your CPM2 username');
+        return;
+      }
+
+      if(localStorage.getItem('joinedQueue') === 'yes'){
+        alert('This device already joined the giveaway queue!');
+        return;
+      }
+
+      let count = document.getElementById('queueCount');
+      let current = parseInt(count.innerText);
+
+      current++;
+      count.innerText = current;
+
+      localStorage.setItem('joinedQueue', 'yes');
+
+      document.getElementById('status').innerText =
+      'Welcome ' + name + '! You successfully joined the giveaway queue.';
+    }
+
+    function copyLink(){
+      let text = document.getElementById('shareLink').innerText;
+
+      navigator.clipboard.writeText(text);
+
+      let currentShares = parseInt(localStorage.getItem('shareCount')) || 0;
+
+      currentShares++;
+
+      localStorage.setItem('shareCount', currentShares);
+
+      alert('Website link copied! Total Shares: ' + currentShares + '/5');
+    }
+
+    function claimProPass(){
+      let sharedCount = parseInt(localStorage.getItem('shareCount')) || 0;
+
+      if(localStorage.getItem('proPassClaimed') === 'yes'){
+        alert('This device already claimed PRO PASS!');
+        return;
+      }
+
+      if(sharedCount < 5){
+        alert('Share the website with 5 friends first!');
+        return;
+      }
+
+      document.getElementById('proMessage').innerText =
+      'PRO PASS Activated! Welcome to the Premium Queue.';
+
+      document.getElementById('premiumWindow').style.display = 'block';
+
+      let randomQueue = Math.floor(Math.random() * 50) + 1;
+
+      document.getElementById('premiumQueueNumber').innerText =
+      '#' + randomQueue;
+
+      localStorage.setItem('proPassClaimed', 'yes');
+    }
+
+  </script>
+
+</body>
+</html>

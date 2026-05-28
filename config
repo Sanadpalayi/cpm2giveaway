@@ -1,0 +1,9 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "car-parking-multiplayer-2-giveaway"]
+	url = https://github.com/Sanadpalayi/new-repository.git
+	fetch = +refs/heads/*:refs/remotes/car-parking-multiplayer-2-giveaway/*
